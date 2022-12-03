@@ -79,6 +79,10 @@ namespace MacroBot
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tbReadedData = new System.Windows.Forms.TabPage();
             this.txtReadedData = new System.Windows.Forms.TextBox();
+            this.btnStop = new System.Windows.Forms.Button();
+            this.label21 = new System.Windows.Forms.Label();
+            this.txtWaitingTime = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
             this.tblControl.SuspendLayout();
             this.pnlMacroSettings.SuspendLayout();
             this.pnlMouse.SuspendLayout();
@@ -128,6 +132,10 @@ namespace MacroBot
             // 
             // pnlMacroSettings
             // 
+            this.pnlMacroSettings.Controls.Add(this.label22);
+            this.pnlMacroSettings.Controls.Add(this.txtWaitingTime);
+            this.pnlMacroSettings.Controls.Add(this.label21);
+            this.pnlMacroSettings.Controls.Add(this.btnStop);
             this.pnlMacroSettings.Controls.Add(this.lblMacroStart);
             this.pnlMacroSettings.Controls.Add(this.lblWarningInfoSave);
             this.pnlMacroSettings.Controls.Add(this.btnStart);
@@ -150,7 +158,7 @@ namespace MacroBot
             this.lblMacroStart.BackColor = System.Drawing.Color.Black;
             this.lblMacroStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lblMacroStart.ForeColor = System.Drawing.Color.White;
-            this.lblMacroStart.Location = new System.Drawing.Point(13, 276);
+            this.lblMacroStart.Location = new System.Drawing.Point(9, 369);
             this.lblMacroStart.Name = "lblMacroStart";
             this.lblMacroStart.Size = new System.Drawing.Size(342, 20);
             this.lblMacroStart.TabIndex = 7;
@@ -162,7 +170,7 @@ namespace MacroBot
             this.lblWarningInfoSave.BackColor = System.Drawing.Color.Red;
             this.lblWarningInfoSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lblWarningInfoSave.ForeColor = System.Drawing.Color.White;
-            this.lblWarningInfoSave.Location = new System.Drawing.Point(13, 230);
+            this.lblWarningInfoSave.Location = new System.Drawing.Point(9, 323);
             this.lblWarningInfoSave.Name = "lblWarningInfoSave";
             this.lblWarningInfoSave.Size = new System.Drawing.Size(180, 20);
             this.lblWarningInfoSave.TabIndex = 7;
@@ -173,7 +181,7 @@ namespace MacroBot
             this.btnStart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btnStart.Enabled = false;
             this.btnStart.ForeColor = System.Drawing.Color.White;
-            this.btnStart.Location = new System.Drawing.Point(255, 181);
+            this.btnStart.Location = new System.Drawing.Point(111, 244);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(100, 23);
             this.btnStart.TabIndex = 6;
@@ -185,7 +193,7 @@ namespace MacroBot
             // 
             this.btnAllProgramClear.BackColor = System.Drawing.Color.Red;
             this.btnAllProgramClear.ForeColor = System.Drawing.Color.Snow;
-            this.btnAllProgramClear.Location = new System.Drawing.Point(149, 141);
+            this.btnAllProgramClear.Location = new System.Drawing.Point(111, 204);
             this.btnAllProgramClear.Name = "btnAllProgramClear";
             this.btnAllProgramClear.Size = new System.Drawing.Size(100, 23);
             this.btnAllProgramClear.TabIndex = 5;
@@ -195,9 +203,9 @@ namespace MacroBot
             // 
             // btnMacroSettingSave
             // 
-            this.btnMacroSettingSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnMacroSettingSave.ForeColor = System.Drawing.Color.White;
-            this.btnMacroSettingSave.Location = new System.Drawing.Point(255, 141);
+            this.btnMacroSettingSave.BackColor = System.Drawing.Color.Yellow;
+            this.btnMacroSettingSave.ForeColor = System.Drawing.Color.Black;
+            this.btnMacroSettingSave.Location = new System.Drawing.Point(217, 204);
             this.btnMacroSettingSave.Name = "btnMacroSettingSave";
             this.btnMacroSettingSave.Size = new System.Drawing.Size(100, 23);
             this.btnMacroSettingSave.TabIndex = 4;
@@ -207,7 +215,7 @@ namespace MacroBot
             // 
             // txtRepeatNumber
             // 
-            this.txtRepeatNumber.Location = new System.Drawing.Point(149, 88);
+            this.txtRepeatNumber.Location = new System.Drawing.Point(149, 77);
             this.txtRepeatNumber.Name = "txtRepeatNumber";
             this.txtRepeatNumber.Size = new System.Drawing.Size(100, 20);
             this.txtRepeatNumber.TabIndex = 3;
@@ -215,7 +223,7 @@ namespace MacroBot
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(10, 88);
+            this.label7.Location = new System.Drawing.Point(10, 80);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(68, 13);
             this.label7.TabIndex = 2;
@@ -593,6 +601,48 @@ namespace MacroBot
             this.txtReadedData.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtReadedData.Size = new System.Drawing.Size(437, 494);
             this.txtReadedData.TabIndex = 0;
+            this.txtReadedData.TextChanged += new System.EventHandler(this.txtReadedData_TextChanged);
+            // 
+            // btnStop
+            // 
+            this.btnStop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnStop.ForeColor = System.Drawing.Color.White;
+            this.btnStop.Location = new System.Drawing.Point(217, 244);
+            this.btnStop.Name = "btnStop";
+            this.btnStop.Size = new System.Drawing.Size(100, 23);
+            this.btnStop.TabIndex = 8;
+            this.btnStop.Text = "Macro Durdur";
+            this.btnStop.UseVisualStyleBackColor = false;
+            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(13, 120);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(101, 26);
+            this.label21.TabIndex = 9;
+            this.label21.Text = "İşlem Arası Bekleme\r\nSüresi\r\n";
+            // 
+            // txtWaitingTime
+            // 
+            this.txtWaitingTime.Location = new System.Drawing.Point(149, 125);
+            this.txtWaitingTime.Name = "txtWaitingTime";
+            this.txtWaitingTime.Size = new System.Drawing.Size(100, 20);
+            this.txtWaitingTime.TabIndex = 10;
+            this.txtWaitingTime.Text = "50";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.BackColor = System.Drawing.Color.Transparent;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label22.ForeColor = System.Drawing.Color.Red;
+            this.label22.Location = new System.Drawing.Point(13, 157);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(301, 16);
+            this.label22.TabIndex = 11;
+            this.label22.Text = "Tekrarlar Arası Bekleme Süresi (milisecond cinsi)";
             // 
             // Form1
             // 
@@ -670,6 +720,10 @@ namespace MacroBot
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tbReadedData;
         private System.Windows.Forms.TextBox txtReadedData;
+        private System.Windows.Forms.Button btnStop;
+        private System.Windows.Forms.TextBox txtWaitingTime;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label22;
     }
 }
 

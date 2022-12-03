@@ -37,8 +37,11 @@ namespace MacroBot
 
         private int repeatNumber = 0;
 
+        private int repeatAfterSleepMilisecond = 0;
+
         private RunMacro rm = null;
 
+        private Thread runMacroThread = null;
 
         public Form1()
         {
@@ -52,6 +55,7 @@ namespace MacroBot
                 rm = new RunMacro();
                 rectangleInfo = new CreatedRectangleInfo();
                 rectangleDrawingCoordiantList = new List<RectangleCooridant>();
+                createRunMacroThreadInstance();
             }
             catch (Exception ex)
             {
@@ -198,6 +202,8 @@ namespace MacroBot
 
         private void macroRunFunction()
         {
+            bool macroFinishStatus = true;
+
             for (int i = 0; i < repeatNumber; i++)
             {
                 var macroResult = rm.runMacro(_actionRepository.actionList, _actionRepository.screenReadActionList);
@@ -216,11 +222,19 @@ namespace MacroBot
                         macroStatusText("Kelime Bulundu");
                     else macroStatusText("Macro Durduruldu");
 
+                    macroFinishStatus = false;
                     break;
                 }
 
-                Thread.Sleep(50);
+                Thread.Sleep(repeatAfterSleepMilisecond);
             }
+
+            if (macroFinishStatus)
+                macroStatusText("Macro Tamamlandı");
+
+            enabledAllButton();
+
+            stopRunMacroThread();
         }
 
         private void resetAllObject()
@@ -254,8 +268,10 @@ namespace MacroBot
 
         private void addReadedData(string data)
         {
-            txtReadedData.Text += data + Environment.NewLine;
+            txtReadedData.Text += data;
+            txtReadedData.Text += Environment.NewLine;
             txtReadedData.Text += "------------------";
+            txtReadedData.Text += Environment.NewLine;
         }
 
         public void findedWord()
@@ -266,6 +282,18 @@ namespace MacroBot
         private void macroStatusText(string text)
         {
             lblMacroStart.Text = text;
+        }
+
+        private void createRunMacroThreadInstance()
+        {
+            runMacroThread = new Thread(macroRunFunction);
+            runMacroThread.IsBackground = true;
+        }
+
+        private void stopRunMacroThread()
+        {
+            if (runMacroThread != null)
+                runMacroThread.Abort();
         }
 
         #endregion
@@ -395,6 +423,9 @@ namespace MacroBot
 
                 repeatNumber = Convert.ToInt32(txtRepeatNumber.Text);
 
+                if (!string.IsNullOrWhiteSpace(txtWaitingTime.Text))
+                    repeatAfterSleepMilisecond = Convert.ToInt32(txtWaitingTime.Text);
+
                 _exeProcesses.setProccess(exeName);
 
                 lblWarningInfoSave.Text = "Bilgiler Kayıt Edildi. İşleme Devam Edebilirsiniz";
@@ -426,11 +457,18 @@ namespace MacroBot
         {
             try
             {
-                macroStatusText("Macro Başlatıldı");
-                disabledAllButton();
-                macroRunFunction();
-                enabledAllButton();
-                macroStatusText("Macro Sonlandırıldı");
+
+                if (runMacroThread.ThreadState != ThreadState.Running)
+                {
+                    macroStatusText("Macro Başlatıldı");
+                    disabledAllButton();
+
+                    if (runMacroThread.ThreadState == ThreadState.Aborted || runMacroThread.ThreadState == ThreadState.Stopped)
+                        createRunMacroThreadInstance();
+
+                    runMacroThread.Start();
+                }
+
             }
             catch (Exception ex)
             {
@@ -438,9 +476,21 @@ namespace MacroBot
             }
         }
 
-
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+            stopRunMacroThread();
+        }
 
         #endregion
+
+        private void txtReadedData_TextChanged(object sender, EventArgs e)
+        {
+            txtReadedData.SelectionStart = txtReadedData.TextLength;
+            txtReadedData.ScrollToCaret();
+            txtReadedData.Refresh();
+        }
+
+
     }
 }
 
