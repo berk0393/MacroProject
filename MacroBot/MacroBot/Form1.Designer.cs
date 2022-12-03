@@ -34,6 +34,8 @@ namespace MacroBot
             this.drpActionType = new System.Windows.Forms.ComboBox();
             this.tblControl = new System.Windows.Forms.TabControl();
             this.pnlMacroSettings = new System.Windows.Forms.TabPage();
+            this.lblMacroStart = new System.Windows.Forms.Label();
+            this.lblWarningInfoSave = new System.Windows.Forms.Label();
             this.btnStart = new System.Windows.Forms.Button();
             this.btnAllProgramClear = new System.Windows.Forms.Button();
             this.btnMacroSettingSave = new System.Windows.Forms.Button();
@@ -45,6 +47,17 @@ namespace MacroBot
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.pnlReadScreen = new System.Windows.Forms.TabPage();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.txtClick3 = new System.Windows.Forms.TextBox();
+            this.txtClick2 = new System.Windows.Forms.TextBox();
+            this.txtClick1 = new System.Windows.Forms.TextBox();
+            this.txtClick0 = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -62,19 +75,6 @@ namespace MacroBot
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnRecordRectangle = new System.Windows.Forms.Button();
-            this.lblWarningInfoSave = new System.Windows.Forms.Label();
-            this.txtClick3 = new System.Windows.Forms.TextBox();
-            this.txtClick2 = new System.Windows.Forms.TextBox();
-            this.txtClick1 = new System.Windows.Forms.TextBox();
-            this.txtClick0 = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.lblMacroStart = new System.Windows.Forms.Label();
             this.tbActionList = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tbReadedData = new System.Windows.Forms.TabPage();
@@ -144,6 +144,29 @@ namespace MacroBot
             this.pnlMacroSettings.TabIndex = 2;
             this.pnlMacroSettings.Text = "Macro Ayarları";
             this.pnlMacroSettings.UseVisualStyleBackColor = true;
+            // 
+            // lblMacroStart
+            // 
+            this.lblMacroStart.BackColor = System.Drawing.Color.Black;
+            this.lblMacroStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblMacroStart.ForeColor = System.Drawing.Color.White;
+            this.lblMacroStart.Location = new System.Drawing.Point(13, 276);
+            this.lblMacroStart.Name = "lblMacroStart";
+            this.lblMacroStart.Size = new System.Drawing.Size(342, 20);
+            this.lblMacroStart.TabIndex = 7;
+            this.lblMacroStart.Text = "Macro Durumu";
+            // 
+            // lblWarningInfoSave
+            // 
+            this.lblWarningInfoSave.AutoSize = true;
+            this.lblWarningInfoSave.BackColor = System.Drawing.Color.Red;
+            this.lblWarningInfoSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblWarningInfoSave.ForeColor = System.Drawing.Color.White;
+            this.lblWarningInfoSave.Location = new System.Drawing.Point(13, 230);
+            this.lblWarningInfoSave.Name = "lblWarningInfoSave";
+            this.lblWarningInfoSave.Size = new System.Drawing.Size(180, 20);
+            this.lblWarningInfoSave.TabIndex = 7;
+            this.lblWarningInfoSave.Text = "Bilgiler Kayıt Edilmedi";
             // 
             // btnStart
             // 
@@ -285,6 +308,95 @@ namespace MacroBot
             this.pnlReadScreen.TabIndex = 1;
             this.pnlReadScreen.Text = "Ekran Okuma";
             this.pnlReadScreen.UseVisualStyleBackColor = true;
+            // 
+            // label20
+            // 
+            this.label20.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label20.Location = new System.Drawing.Point(4, 255);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(758, 2);
+            this.label20.TabIndex = 28;
+            // 
+            // label19
+            // 
+            this.label19.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label19.Location = new System.Drawing.Point(3, 162);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(758, 2);
+            this.label19.TabIndex = 27;
+            // 
+            // txtClick3
+            // 
+            this.txtClick3.Location = new System.Drawing.Point(587, 211);
+            this.txtClick3.Name = "txtClick3";
+            this.txtClick3.Size = new System.Drawing.Size(100, 20);
+            this.txtClick3.TabIndex = 25;
+            // 
+            // txtClick2
+            // 
+            this.txtClick2.Location = new System.Drawing.Point(408, 211);
+            this.txtClick2.Name = "txtClick2";
+            this.txtClick2.Size = new System.Drawing.Size(100, 20);
+            this.txtClick2.TabIndex = 26;
+            // 
+            // txtClick1
+            // 
+            this.txtClick1.Location = new System.Drawing.Point(237, 211);
+            this.txtClick1.Name = "txtClick1";
+            this.txtClick1.Size = new System.Drawing.Size(100, 20);
+            this.txtClick1.TabIndex = 24;
+            // 
+            // txtClick0
+            // 
+            this.txtClick0.Location = new System.Drawing.Point(72, 211);
+            this.txtClick0.Name = "txtClick0";
+            this.txtClick0.Size = new System.Drawing.Size(100, 20);
+            this.txtClick0.TabIndex = 23;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(539, 214);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(42, 13);
+            this.label18.TabIndex = 22;
+            this.label18.Text = "Click 4:";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(359, 211);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(42, 13);
+            this.label17.TabIndex = 21;
+            this.label17.Text = "Click 3:";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(188, 211);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(42, 13);
+            this.label16.TabIndex = 20;
+            this.label16.Text = "Click 2:";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(23, 211);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(42, 13);
+            this.label15.TabIndex = 19;
+            this.label15.Text = "Click 1:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(19, 183);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(104, 13);
+            this.label14.TabIndex = 18;
+            this.label14.Text = "Seçilen Pixel Alanları";
             // 
             // label13
             // 
@@ -440,118 +552,6 @@ namespace MacroBot
             this.btnRecordRectangle.UseVisualStyleBackColor = true;
             this.btnRecordRectangle.Click += new System.EventHandler(this.btnRecordRectangle_Click);
             // 
-            // lblWarningInfoSave
-            // 
-            this.lblWarningInfoSave.AutoSize = true;
-            this.lblWarningInfoSave.BackColor = System.Drawing.Color.Red;
-            this.lblWarningInfoSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblWarningInfoSave.ForeColor = System.Drawing.Color.White;
-            this.lblWarningInfoSave.Location = new System.Drawing.Point(13, 230);
-            this.lblWarningInfoSave.Name = "lblWarningInfoSave";
-            this.lblWarningInfoSave.Size = new System.Drawing.Size(180, 20);
-            this.lblWarningInfoSave.TabIndex = 7;
-            this.lblWarningInfoSave.Text = "Bilgiler Kayıt Edilmedi";
-            // 
-            // txtClick3
-            // 
-            this.txtClick3.Location = new System.Drawing.Point(587, 211);
-            this.txtClick3.Name = "txtClick3";
-            this.txtClick3.Size = new System.Drawing.Size(100, 20);
-            this.txtClick3.TabIndex = 25;
-            // 
-            // txtClick2
-            // 
-            this.txtClick2.Location = new System.Drawing.Point(408, 211);
-            this.txtClick2.Name = "txtClick2";
-            this.txtClick2.Size = new System.Drawing.Size(100, 20);
-            this.txtClick2.TabIndex = 26;
-            // 
-            // txtClick1
-            // 
-            this.txtClick1.Location = new System.Drawing.Point(237, 211);
-            this.txtClick1.Name = "txtClick1";
-            this.txtClick1.Size = new System.Drawing.Size(100, 20);
-            this.txtClick1.TabIndex = 24;
-            // 
-            // txtClick0
-            // 
-            this.txtClick0.Location = new System.Drawing.Point(72, 211);
-            this.txtClick0.Name = "txtClick0";
-            this.txtClick0.Size = new System.Drawing.Size(100, 20);
-            this.txtClick0.TabIndex = 23;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(539, 214);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(42, 13);
-            this.label18.TabIndex = 22;
-            this.label18.Text = "Click 4:";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(359, 211);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(42, 13);
-            this.label17.TabIndex = 21;
-            this.label17.Text = "Click 3:";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(188, 211);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(42, 13);
-            this.label16.TabIndex = 20;
-            this.label16.Text = "Click 2:";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(23, 211);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(42, 13);
-            this.label15.TabIndex = 19;
-            this.label15.Text = "Click 1:";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(19, 183);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(104, 13);
-            this.label14.TabIndex = 18;
-            this.label14.Text = "Seçilen Pixel Alanları";
-            // 
-            // label19
-            // 
-            this.label19.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label19.Location = new System.Drawing.Point(3, 162);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(758, 2);
-            this.label19.TabIndex = 27;
-            // 
-            // label20
-            // 
-            this.label20.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label20.Location = new System.Drawing.Point(4, 255);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(758, 2);
-            this.label20.TabIndex = 28;
-            // 
-            // lblMacroStart
-            // 
-            this.lblMacroStart.BackColor = System.Drawing.Color.Black;
-            this.lblMacroStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblMacroStart.ForeColor = System.Drawing.Color.White;
-            this.lblMacroStart.Location = new System.Drawing.Point(13, 276);
-            this.lblMacroStart.Name = "lblMacroStart";
-            this.lblMacroStart.Size = new System.Drawing.Size(342, 20);
-            this.lblMacroStart.TabIndex = 7;
-            this.lblMacroStart.Text = "Macro Durumu";
-            // 
             // tbActionList
             // 
             this.tbActionList.Controls.Add(this.tabPage1);
@@ -589,6 +589,8 @@ namespace MacroBot
             this.txtReadedData.Location = new System.Drawing.Point(7, 7);
             this.txtReadedData.Multiline = true;
             this.txtReadedData.Name = "txtReadedData";
+            this.txtReadedData.ReadOnly = true;
+            this.txtReadedData.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtReadedData.Size = new System.Drawing.Size(437, 494);
             this.txtReadedData.TabIndex = 0;
             // 
