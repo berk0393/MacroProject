@@ -43,20 +43,39 @@ namespace MacroBot
 
         private Thread runMacroThread = null;
 
+        private bool macroRuning = false;
+
+        private IKeyboardMouseEvents keyboardMouseEvents;
+
         public Form1()
         {
             try
             {
                 InitializeComponent();
-                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+
+                //Keyhook
+                createHook();
+                keyboardMouseEvents.MouseClick += MouseClickAll;
+                keyboardMouseEvents.KeyUp += KeyboardOnKeyUp;
+
+                //Action Repository
                 _actionRepository = new ActionRepository();
                 addActionType();
-                Hook.GlobalEvents().MouseClick += MouseClickAll;
+
+
+                //Exe Proccess
                 _exeProcesses = new ExeProcesses();
+
+                //Macro Instance
                 rm = new RunMacro();
+
+                //Rectangle Info
                 rectangleInfo = new CreatedRectangleInfo();
                 rectangleDrawingCoordiantList = new List<RectangleCooridant>();
+
+                //Thread Instance
                 createRunMacroThreadInstance();
+
                 clearOlderFiles();
 
             }
@@ -68,6 +87,14 @@ namespace MacroBot
         }
 
         #region Methods
+
+        /// <summary>
+        /// Fare ve Klavye Eventleri
+        /// </summary>
+        private void createHook()
+        {
+            keyboardMouseEvents = Hook.GlobalEvents();
+        }
 
         /// <summary>
         /// Formun Select'ine İşlem Türlerini Basar
@@ -298,6 +325,8 @@ namespace MacroBot
         {
             if (runMacroThread != null)
                 runMacroThread.Abort();
+
+            macroRuning = false;
         }
 
         private void clearOlderFiles()
@@ -370,6 +399,24 @@ namespace MacroBot
                         btnSaveRectangle.Enabled = true;
                         rectangleDrawingCoordiantList.Clear();
                         _exeProcesses.getMyScreen();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                showAlert(ex.Message);
+            }
+        }
+
+        private void KeyboardOnKeyUp(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (macroRuning)
+                {
+                    if (e.KeyCode.ToString() == "F8")
+                    {
+                        btnStop.PerformClick();
                     }
                 }
             }
@@ -483,6 +530,8 @@ namespace MacroBot
                         createRunMacroThreadInstance();
 
                     runMacroThread.Start();
+
+                    macroRuning = true;
                 }
 
             }
@@ -494,6 +543,8 @@ namespace MacroBot
 
         private void btnStop_Click(object sender, EventArgs e)
         {
+            macroStatusText("Macro Durduruldu");
+            enabledAllButton();
             stopRunMacroThread();
         }
 
@@ -505,10 +556,6 @@ namespace MacroBot
         }
 
         #endregion
-
-
-
-
     }
 }
 

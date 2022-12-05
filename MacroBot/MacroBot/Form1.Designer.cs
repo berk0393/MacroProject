@@ -34,6 +34,14 @@ namespace MacroBot
             this.drpActionType = new System.Windows.Forms.ComboBox();
             this.tblControl = new System.Windows.Forms.TabControl();
             this.pnlMacroSettings = new System.Windows.Forms.TabPage();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblRepeatWaitingTimeInfo = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.lblRepeatNumberInfo = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.lblExeNameInfo = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.txtWaitingTime = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
@@ -83,22 +91,15 @@ namespace MacroBot
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tbReadedData = new System.Windows.Forms.TabPage();
             this.txtReadedData = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.lblExeNameInfo = new System.Windows.Forms.Label();
-            this.lblRepeatNumberInfo = new System.Windows.Forms.Label();
-            this.lblRepeatWaitingTimeInfo = new System.Windows.Forms.Label();
+            this.lblMacroStopInfo = new System.Windows.Forms.Label();
             this.tblControl.SuspendLayout();
             this.pnlMacroSettings.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.pnlMouse.SuspendLayout();
             this.pnlReadScreen.SuspendLayout();
             this.tbActionList.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tbReadedData.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lstbxRecord
@@ -141,6 +142,7 @@ namespace MacroBot
             // 
             // pnlMacroSettings
             // 
+            this.pnlMacroSettings.Controls.Add(this.lblMacroStopInfo);
             this.pnlMacroSettings.Controls.Add(this.panel1);
             this.pnlMacroSettings.Controls.Add(this.label22);
             this.pnlMacroSettings.Controls.Add(this.txtWaitingTime);
@@ -162,6 +164,95 @@ namespace MacroBot
             this.pnlMacroSettings.TabIndex = 2;
             this.pnlMacroSettings.Text = "Macro Ayarları";
             this.pnlMacroSettings.UseVisualStyleBackColor = true;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.lblRepeatWaitingTimeInfo);
+            this.panel1.Controls.Add(this.label26);
+            this.panel1.Controls.Add(this.lblRepeatNumberInfo);
+            this.panel1.Controls.Add(this.label25);
+            this.panel1.Controls.Add(this.lblExeNameInfo);
+            this.panel1.Controls.Add(this.label24);
+            this.panel1.Controls.Add(this.label23);
+            this.panel1.Location = new System.Drawing.Point(403, 31);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(344, 142);
+            this.panel1.TabIndex = 12;
+            // 
+            // lblRepeatWaitingTimeInfo
+            // 
+            this.lblRepeatWaitingTimeInfo.AutoSize = true;
+            this.lblRepeatWaitingTimeInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblRepeatWaitingTimeInfo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblRepeatWaitingTimeInfo.Location = new System.Drawing.Point(207, 100);
+            this.lblRepeatWaitingTimeInfo.Name = "lblRepeatWaitingTimeInfo";
+            this.lblRepeatWaitingTimeInfo.Size = new System.Drawing.Size(0, 15);
+            this.lblRepeatWaitingTimeInfo.TabIndex = 1;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label26.ForeColor = System.Drawing.Color.Red;
+            this.label26.Location = new System.Drawing.Point(20, 100);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(187, 15);
+            this.label26.TabIndex = 1;
+            this.label26.Text = "İşlem Arası Bekleme Süresi:";
+            // 
+            // lblRepeatNumberInfo
+            // 
+            this.lblRepeatNumberInfo.AutoSize = true;
+            this.lblRepeatNumberInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblRepeatNumberInfo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblRepeatNumberInfo.Location = new System.Drawing.Point(114, 73);
+            this.lblRepeatNumberInfo.Name = "lblRepeatNumberInfo";
+            this.lblRepeatNumberInfo.Size = new System.Drawing.Size(0, 15);
+            this.lblRepeatNumberInfo.TabIndex = 1;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label25.ForeColor = System.Drawing.Color.Red;
+            this.label25.Location = new System.Drawing.Point(20, 73);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(94, 15);
+            this.label25.TabIndex = 1;
+            this.label25.Text = "Tekrar Sayısı:";
+            // 
+            // lblExeNameInfo
+            // 
+            this.lblExeNameInfo.AutoSize = true;
+            this.lblExeNameInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblExeNameInfo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblExeNameInfo.Location = new System.Drawing.Point(79, 46);
+            this.lblExeNameInfo.Name = "lblExeNameInfo";
+            this.lblExeNameInfo.Size = new System.Drawing.Size(0, 15);
+            this.lblExeNameInfo.TabIndex = 1;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label24.ForeColor = System.Drawing.Color.Red;
+            this.label24.Location = new System.Drawing.Point(20, 46);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(59, 15);
+            this.label24.TabIndex = 1;
+            this.label24.Text = "Exe Adı:";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label23.Location = new System.Drawing.Point(19, 4);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(127, 20);
+            this.label23.TabIndex = 0;
+            this.label23.Text = "Mevcut Ayarlar";
             // 
             // label22
             // 
@@ -654,94 +745,16 @@ namespace MacroBot
             this.txtReadedData.TabIndex = 0;
             this.txtReadedData.TextChanged += new System.EventHandler(this.txtReadedData_TextChanged);
             // 
-            // panel1
+            // lblMacroStopInfo
             // 
-            this.panel1.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.lblRepeatWaitingTimeInfo);
-            this.panel1.Controls.Add(this.label26);
-            this.panel1.Controls.Add(this.lblRepeatNumberInfo);
-            this.panel1.Controls.Add(this.label25);
-            this.panel1.Controls.Add(this.lblExeNameInfo);
-            this.panel1.Controls.Add(this.label24);
-            this.panel1.Controls.Add(this.label23);
-            this.panel1.Location = new System.Drawing.Point(403, 31);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(344, 142);
-            this.panel1.TabIndex = 12;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label23.Location = new System.Drawing.Point(19, 4);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(127, 20);
-            this.label23.TabIndex = 0;
-            this.label23.Text = "Mevcut Ayarlar";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label24.ForeColor = System.Drawing.Color.Red;
-            this.label24.Location = new System.Drawing.Point(20, 46);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(59, 15);
-            this.label24.TabIndex = 1;
-            this.label24.Text = "Exe Adı:";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label25.ForeColor = System.Drawing.Color.Red;
-            this.label25.Location = new System.Drawing.Point(20, 73);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(94, 15);
-            this.label25.TabIndex = 1;
-            this.label25.Text = "Tekrar Sayısı:";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label26.ForeColor = System.Drawing.Color.Red;
-            this.label26.Location = new System.Drawing.Point(20, 100);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(187, 15);
-            this.label26.TabIndex = 1;
-            this.label26.Text = "İşlem Arası Bekleme Süresi:";
-            // 
-            // lblExeNameInfo
-            // 
-            this.lblExeNameInfo.AutoSize = true;
-            this.lblExeNameInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblExeNameInfo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblExeNameInfo.Location = new System.Drawing.Point(79, 46);
-            this.lblExeNameInfo.Name = "lblExeNameInfo";
-            this.lblExeNameInfo.Size = new System.Drawing.Size(0, 15);
-            this.lblExeNameInfo.TabIndex = 1;
-            // 
-            // lblRepeatNumberInfo
-            // 
-            this.lblRepeatNumberInfo.AutoSize = true;
-            this.lblRepeatNumberInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblRepeatNumberInfo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblRepeatNumberInfo.Location = new System.Drawing.Point(114, 73);
-            this.lblRepeatNumberInfo.Name = "lblRepeatNumberInfo";
-            this.lblRepeatNumberInfo.Size = new System.Drawing.Size(0, 15);
-            this.lblRepeatNumberInfo.TabIndex = 1;
-            // 
-            // lblRepeatWaitingTimeInfo
-            // 
-            this.lblRepeatWaitingTimeInfo.AutoSize = true;
-            this.lblRepeatWaitingTimeInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblRepeatWaitingTimeInfo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblRepeatWaitingTimeInfo.Location = new System.Drawing.Point(207, 100);
-            this.lblRepeatWaitingTimeInfo.Name = "lblRepeatWaitingTimeInfo";
-            this.lblRepeatWaitingTimeInfo.Size = new System.Drawing.Size(0, 15);
-            this.lblRepeatWaitingTimeInfo.TabIndex = 1;
+            this.lblMacroStopInfo.AutoSize = true;
+            this.lblMacroStopInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.lblMacroStopInfo.ForeColor = System.Drawing.Color.Red;
+            this.lblMacroStopInfo.Location = new System.Drawing.Point(214, 279);
+            this.lblMacroStopInfo.Name = "lblMacroStopInfo";
+            this.lblMacroStopInfo.Size = new System.Drawing.Size(116, 16);
+            this.lblMacroStopInfo.TabIndex = 13;
+            this.lblMacroStopInfo.Text = "F8 İle Macro Durur";
             // 
             // Form1
             // 
@@ -755,6 +768,8 @@ namespace MacroBot
             this.tblControl.ResumeLayout(false);
             this.pnlMacroSettings.ResumeLayout(false);
             this.pnlMacroSettings.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.pnlMouse.ResumeLayout(false);
             this.pnlMouse.PerformLayout();
             this.pnlReadScreen.ResumeLayout(false);
@@ -763,8 +778,6 @@ namespace MacroBot
             this.tabPage1.ResumeLayout(false);
             this.tbReadedData.ResumeLayout(false);
             this.tbReadedData.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -833,6 +846,7 @@ namespace MacroBot
         private System.Windows.Forms.Label lblExeNameInfo;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label lblMacroStopInfo;
     }
 }
 

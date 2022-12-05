@@ -59,15 +59,12 @@ namespace MacroBot.Repository
                             return _macroResult;
                         }
                     }
-
-
                 }
                 else
                 {
                     mouseOperations(item.actionID, item.xCoordinate, item.yCoordinate);
                 }
-
-                //Thread.Sleep(50);
+                Thread.Sleep(50);
             }
 
             _macroResult.readedDataList = readedDataList;
