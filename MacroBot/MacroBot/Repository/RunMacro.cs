@@ -11,9 +11,9 @@ namespace MacroBot.Repository
 {
     public class RunMacro
     {
-        SimKeyOperation _simKeyOperation = null;
-        Screenshot _screenshotService = null;
-        ReadImage _readImage = null;
+        private SimKeyOperation _simKeyOperation = null;
+        public Screenshot _screenshotService = null;
+        private ReadImage _readImage = null;
 
         public RunMacro()
         {
@@ -47,21 +47,27 @@ namespace MacroBot.Repository
 
                     _readedData = screenReadOperation(selectedScreenshot);
 
-                    readedDataList.Add(_readedData);                   
+                    readedDataList.Add(_readedData);
 
-                    if(MacroHelper.checkWords(selectedScreenshot.ekListesi, _readedData))
+                    if (selectedScreenshot.ekListesi.Count > 0)
                     {
-                        _macroResult.continueStatus = false;
-                        _macroResult.findSearchedWord = true;
-                        _macroResult.readedDataList = readedDataList;
-                        return _macroResult;
-                    }                    
+                        if (MacroHelper.checkWords(selectedScreenshot.ekListesi, _readedData))
+                        {
+                            _macroResult.continueStatus = false;
+                            _macroResult.findSearchedWord = true;
+                            _macroResult.readedDataList = readedDataList;
+                            return _macroResult;
+                        }
+                    }
+
+
                 }
                 else
                 {
-                    mouseOperations(item.actionID, item.xCoordinate, item.yCoordinate);                    
+                    mouseOperations(item.actionID, item.xCoordinate, item.yCoordinate);
                 }
-                Thread.Sleep(200);
+
+                //Thread.Sleep(50);
             }
 
             _macroResult.readedDataList = readedDataList;
@@ -83,10 +89,7 @@ namespace MacroBot.Repository
 
             if (img == null)
                 throw new Exception("Kırpılmış Görsel Bulunamadı");
-
             string _readData = _readImage.readData(img);
-
-            Thread.Sleep(500);
 
             return _readData;
 

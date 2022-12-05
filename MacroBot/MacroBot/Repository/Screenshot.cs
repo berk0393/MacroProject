@@ -28,7 +28,16 @@ namespace MacroBot.Repository
 
         private string filePath = string.Empty;
 
+        private string rootPath = Application.StartupPath;
+
+        private string imageFolderPath = @"\\Resources\\img\\screenshot\\";
+
         public static Guid fileGuid = Guid.Empty;
+
+        public string getImagesFilePath()
+        {
+            return Directory.GetParent(Directory.GetParent(rootPath).ToString()) + imageFolderPath;
+        }
 
         private string getScreenShotPngName()
         {
@@ -48,7 +57,7 @@ namespace MacroBot.Repository
         public Screenshot()
         {
             string rootPath = Application.StartupPath;
-            filePath = Directory.GetParent(Directory.GetParent(rootPath).ToString()) + @"\\img\\screenshot\\";
+            filePath = getImagesFilePath();
         }
 
         public void takeScreenShot(int x, int y, int width, int height)

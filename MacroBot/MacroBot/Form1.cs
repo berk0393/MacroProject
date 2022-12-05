@@ -48,6 +48,7 @@ namespace MacroBot
             try
             {
                 InitializeComponent();
+                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
                 _actionRepository = new ActionRepository();
                 addActionType();
                 Hook.GlobalEvents().MouseClick += MouseClickAll;
@@ -56,6 +57,8 @@ namespace MacroBot
                 rectangleInfo = new CreatedRectangleInfo();
                 rectangleDrawingCoordiantList = new List<RectangleCooridant>();
                 createRunMacroThreadInstance();
+                clearOlderFiles();
+
             }
             catch (Exception ex)
             {
@@ -251,6 +254,7 @@ namespace MacroBot
             actionQueue = 0;
             screadReadID = 1;
             lstbxRecord.Items.Clear();
+            txtReadedData.Clear();
             clearRectangle();
             resetAllObject();
             enabledAllButton();
@@ -294,6 +298,18 @@ namespace MacroBot
         {
             if (runMacroThread != null)
                 runMacroThread.Abort();
+        }
+
+        private void clearOlderFiles()
+        {
+            MacroHelper.removeFiles(rm._screenshotService.getImagesFilePath());
+        }
+
+        private void setMacroSettingsInfo()
+        {
+            lblExeNameInfo.Text = exeName;
+            lblRepeatNumberInfo.Text = repeatNumber.ToString();
+            lblRepeatWaitingTimeInfo.Text = repeatAfterSleepMilisecond.ToString() + " Milisecond";
         }
 
         #endregion
@@ -432,7 +448,7 @@ namespace MacroBot
                 lblWarningInfoSave.BackColor = Color.FromArgb(50, 205, 50);
 
                 btnStart.Enabled = true;
-                //_exeProcesses.ekranionegetir();
+                setMacroSettingsInfo();
             }
             catch (Exception ex)
             {
@@ -481,14 +497,16 @@ namespace MacroBot
             stopRunMacroThread();
         }
 
-        #endregion
-
         private void txtReadedData_TextChanged(object sender, EventArgs e)
         {
             txtReadedData.SelectionStart = txtReadedData.TextLength;
             txtReadedData.ScrollToCaret();
             txtReadedData.Refresh();
         }
+
+        #endregion
+
+
 
 
     }
