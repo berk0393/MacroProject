@@ -14,5 +14,6 @@ namespace MacroBot.Model
         public int yCoordinate { get; set; }
         public int screenReadID { get; set; } = 0;
         public int actionQueue { get; set; }
+        public int waitingSecond { get; set; }
     }
 }

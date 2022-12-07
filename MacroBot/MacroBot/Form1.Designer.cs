@@ -34,6 +34,7 @@ namespace MacroBot
             this.drpActionType = new System.Windows.Forms.ComboBox();
             this.tblControl = new System.Windows.Forms.TabControl();
             this.pnlMacroSettings = new System.Windows.Forms.TabPage();
+            this.lblMacroStopInfo = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblRepeatWaitingTimeInfo = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
@@ -91,7 +92,9 @@ namespace MacroBot
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tbReadedData = new System.Windows.Forms.TabPage();
             this.txtReadedData = new System.Windows.Forms.TextBox();
-            this.lblMacroStopInfo = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.txtWaitingSecond = new System.Windows.Forms.TextBox();
+            this.pnlWaitingSecondPanel = new System.Windows.Forms.Panel();
             this.tblControl.SuspendLayout();
             this.pnlMacroSettings.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -100,6 +103,7 @@ namespace MacroBot
             this.tbActionList.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tbReadedData.SuspendLayout();
+            this.pnlWaitingSecondPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // lstbxRecord
@@ -128,6 +132,7 @@ namespace MacroBot
             this.drpActionType.Name = "drpActionType";
             this.drpActionType.Size = new System.Drawing.Size(121, 21);
             this.drpActionType.TabIndex = 2;
+            this.drpActionType.SelectedIndexChanged += new System.EventHandler(this.drpActionType_SelectedIndexChanged);
             // 
             // tblControl
             // 
@@ -164,6 +169,17 @@ namespace MacroBot
             this.pnlMacroSettings.TabIndex = 2;
             this.pnlMacroSettings.Text = "Macro Ayarları";
             this.pnlMacroSettings.UseVisualStyleBackColor = true;
+            // 
+            // lblMacroStopInfo
+            // 
+            this.lblMacroStopInfo.AutoSize = true;
+            this.lblMacroStopInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.lblMacroStopInfo.ForeColor = System.Drawing.Color.Red;
+            this.lblMacroStopInfo.Location = new System.Drawing.Point(214, 279);
+            this.lblMacroStopInfo.Name = "lblMacroStopInfo";
+            this.lblMacroStopInfo.Size = new System.Drawing.Size(116, 16);
+            this.lblMacroStopInfo.TabIndex = 13;
+            this.lblMacroStopInfo.Text = "F8 İle Macro Durur";
             // 
             // panel1
             // 
@@ -389,6 +405,7 @@ namespace MacroBot
             // 
             // pnlMouse
             // 
+            this.pnlMouse.Controls.Add(this.pnlWaitingSecondPanel);
             this.pnlMouse.Controls.Add(this.label9);
             this.pnlMouse.Controls.Add(this.label8);
             this.pnlMouse.Controls.Add(this.drpActionType);
@@ -745,16 +762,31 @@ namespace MacroBot
             this.txtReadedData.TabIndex = 0;
             this.txtReadedData.TextChanged += new System.EventHandler(this.txtReadedData_TextChanged);
             // 
-            // lblMacroStopInfo
+            // label27
             // 
-            this.lblMacroStopInfo.AutoSize = true;
-            this.lblMacroStopInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.lblMacroStopInfo.ForeColor = System.Drawing.Color.Red;
-            this.lblMacroStopInfo.Location = new System.Drawing.Point(214, 279);
-            this.lblMacroStopInfo.Name = "lblMacroStopInfo";
-            this.lblMacroStopInfo.Size = new System.Drawing.Size(116, 16);
-            this.lblMacroStopInfo.TabIndex = 13;
-            this.lblMacroStopInfo.Text = "F8 İle Macro Durur";
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(3, 20);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(139, 13);
+            this.label27.TabIndex = 5;
+            this.label27.Text = "Bekleme Süresi (Milisecond)";
+            // 
+            // txtWaitingSecond
+            // 
+            this.txtWaitingSecond.Location = new System.Drawing.Point(167, 20);
+            this.txtWaitingSecond.Name = "txtWaitingSecond";
+            this.txtWaitingSecond.Size = new System.Drawing.Size(100, 20);
+            this.txtWaitingSecond.TabIndex = 6;
+            // 
+            // pnlWaitingSecondPanel
+            // 
+            this.pnlWaitingSecondPanel.Controls.Add(this.label27);
+            this.pnlWaitingSecondPanel.Controls.Add(this.txtWaitingSecond);
+            this.pnlWaitingSecondPanel.Location = new System.Drawing.Point(253, 6);
+            this.pnlWaitingSecondPanel.Name = "pnlWaitingSecondPanel";
+            this.pnlWaitingSecondPanel.Size = new System.Drawing.Size(289, 52);
+            this.pnlWaitingSecondPanel.TabIndex = 7;
+            this.pnlWaitingSecondPanel.Visible = false;
             // 
             // Form1
             // 
@@ -778,6 +810,8 @@ namespace MacroBot
             this.tabPage1.ResumeLayout(false);
             this.tbReadedData.ResumeLayout(false);
             this.tbReadedData.PerformLayout();
+            this.pnlWaitingSecondPanel.ResumeLayout(false);
+            this.pnlWaitingSecondPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -847,6 +881,9 @@ namespace MacroBot
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label lblMacroStopInfo;
+        private System.Windows.Forms.TextBox txtWaitingSecond;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Panel pnlWaitingSecondPanel;
     }
 }
 

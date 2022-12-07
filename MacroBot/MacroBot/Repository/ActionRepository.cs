@@ -31,6 +31,7 @@ namespace MacroBot.Repository
             types.Add(new ActionTypeModel() { typeID = 3, typeName = "Sol Çift Click" });
             types.Add(new ActionTypeModel() { typeID = 4, typeName = "Sağ Çift Click" });
             types.Add(new ActionTypeModel() { typeID = 6, typeName = "Yönlendir" });
+            types.Add(new ActionTypeModel() { typeID = 7, typeName = "Bekle" });
             types.Add(new ActionTypeModel() { typeID = 5, typeName = "Ekran Oku", visibleMouseEvent = false });
 
             return types;
@@ -44,7 +45,7 @@ namespace MacroBot.Repository
         /// <param name="yPoint"></param>
         /// <param name="actionTypeValue"></param>
         /// <param name="screenReadID"></param>
-        public void addActionList(int actionQueue, int xPoint, int yPoint, int actionTypeValue, int screenReadID = 0)
+        public void addActionList(int actionQueue, int xPoint, int yPoint, int actionTypeValue, int screenReadID = 0, int waitingSecond = 0)
         {
             actionList.Add(new BotActionList()
             {
@@ -52,7 +53,8 @@ namespace MacroBot.Repository
                 xCoordinate = xPoint,
                 yCoordinate = yPoint,
                 actionQueue = actionQueue,
-                screenReadID = screenReadID
+                screenReadID = screenReadID,
+                waitingSecond = waitingSecond
             });
         }
 

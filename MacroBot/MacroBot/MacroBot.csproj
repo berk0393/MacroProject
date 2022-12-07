@@ -115,6 +115,7 @@
     <Compile Include="Repository\RunMacro.cs" />
     <Compile Include="Repository\Screenshot.cs" />
     <Compile Include="Repository\SimKeyOperation.cs" />
+    <Compile Include="Repository\TextSearch.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

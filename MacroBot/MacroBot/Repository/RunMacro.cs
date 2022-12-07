@@ -36,6 +36,12 @@ namespace MacroBot.Repository
 
             foreach (BotActionList item in actionList)
             {
+                if (item.actionID == 7)
+                {
+                    Thread.Sleep(item.waitingSecond);
+                    continue;
+                }
+
                 if (item.screenReadID != 0)
                 {
                     string _readedData = string.Empty;
@@ -86,6 +92,7 @@ namespace MacroBot.Repository
 
             if (img == null)
                 throw new Exception("Kırpılmış Görsel Bulunamadı");
+
             string _readData = _readImage.readData(img);
 
             return _readData;

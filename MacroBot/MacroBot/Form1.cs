@@ -130,7 +130,7 @@ namespace MacroBot
         /// <param name="xPoint"></param>
         /// <param name="yPoint"></param>
         /// <param name="screenReadID"></param>
-        private void addListBox(string actionTypeName, int actionTypeValue, int xPoint, int yPoint, int screenReadID = 0)
+        private void addListBox(string actionTypeName, int actionTypeValue, int xPoint, int yPoint, int screenReadID = 0, int waitingSecond = 0)
         {
             if (actionTypeValue == 0)
             {
@@ -138,7 +138,7 @@ namespace MacroBot
                 showAlert("İşlem Türü Yanlış: ID:" + actionTypeValue);
             }
 
-            _actionRepository.addActionList(actionQueue, xPoint, yPoint, actionTypeValue, screenReadID);
+            _actionRepository.addActionList(actionQueue, xPoint, yPoint, actionTypeValue, screenReadID, waitingSecond);
 
             lstbxRecord.Items.Add(new { value = actionQueue, Name = actionTypeName + " - Coordinate: x:" + xPoint + " y:" + yPoint + " ActionID:" + actionTypeValue });
 
@@ -341,6 +341,31 @@ namespace MacroBot
             lblRepeatWaitingTimeInfo.Text = repeatAfterSleepMilisecond.ToString() + " Milisecond";
         }
 
+        private void waitingEventAdd()
+        {
+            int second = 0;
+            string _txtSecodn = txtWaitingSecond.Text;
+
+
+            if (!string.IsNullOrWhiteSpace(_txtSecodn))
+                second = Convert.ToInt32(txtWaitingSecond.Text);
+
+            addListBox("Bekle", 7, 0, 0, 0, second);
+        }
+
+
+        private string Search2(int startPos, string startMatchString, string endMatchString, string response)
+        {
+            int startMarch = response.IndexOf(startMatchString, startPos, StringComparison.Ordinal);
+            if (startMarch != -1)
+            {
+                startMarch += startMatchString.Length;
+                int endMatch = response.IndexOf(endMatchString, startMarch, StringComparison.Ordinal);
+                if (endMatch != -1) { return response.Substring(startMarch, endMatch - startMarch); }
+            }
+            return string.Empty;
+        }
+
         #endregion
 
         #region Events
@@ -352,6 +377,9 @@ namespace MacroBot
         /// <param name="e"></param>
         private void btnRecord_Click(object sender, EventArgs e)
         {
+            if (drpActionType.SelectedValue.ToString() == "7")
+                waitingEventAdd();
+
             recordIsActive = true;
             disabledAllButton();
             exeForegroundWindow();
@@ -556,6 +584,18 @@ namespace MacroBot
         }
 
         #endregion
+
+        private void drpActionType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (drpActionType.SelectedValue.ToString() == "7")
+            {
+                pnlWaitingSecondPanel.Visible = true;
+            }
+            else
+            {
+                pnlWaitingSecondPanel.Visible = false;
+            }
+        }
     }
 }
 
