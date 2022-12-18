@@ -2,89 +2,74 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace MacroBot.Repository
 {
     public class TextSearch
     {
-        public int searchText(string text, List<string> words)
+        public bool searchData(List<string> worldList, string readedData)
         {
-            int textLenght = text.Length;
+            bool isMatch = false;
 
-            string controlText = string.Empty;
+            readedData = readedData.ToLower();
 
-            List<string> searchedList = null;
+            worldList = worldList.ConvertAll(a => a.ToLower()).ToList();
 
-            for (int i = 0; i < textLenght; i++)
+            foreach (string key in worldList)
             {
-                controlText += text[i].ToString();
+                isMatch = Regex.IsMatch(readedData, key);
 
-                searchedList = words.Where(a => a.StartsWith(controlText)).ToList();
-
-
-
+                if (isMatch)
+                    break;
             }
 
-            return 0;
+            return isMatch;
         }
 
-        public static bool checkWords(List<string> worldList, string readedData)
-        {
+        //public int searchText(string text, List<string> words)
+        //{
+        //    int textLenght = text.Length;
 
-            string _readedData = @"Enchant has succeeded.
+        //    string controlText = string.Empty;
 
-                                        of Asmodi(Sufﬁx) has been acquired.
-                                        Enchant has succeeded.
-                                        
-                                        Enchant has succeeded.
-                                        
-                                        of Guardian(Sufﬁx) has been acquired.
-                                        Enchant has succeeded.";
+        //    List<string> searchedList = null;
 
-            //List<string> _readedData = readedData.Split(null).ToList();
+        //    for (int i = 0; i < textLenght; i++)
+        //    {
+        //        controlText += text[i].ToString();
 
-            //_readedData.RemoveAll(a => string.IsNullOrWhiteSpace(a));
+        //        searchedList = words.Where(a => a.StartsWith(controlText)).ToList();
+        //    }
 
-            //_readedData = _readedData.ConvertAll(a => a.ToLower()).Distinct().ToList();
+        //    return 0;
+        //}
 
-            //worldList = _readedData.ConvertAll(a => a.ToLower()).ToList();
+        //public static bool checkWords(List<string> worldList, string readedData)
+        //{
+        //    List<string> _readedData = readedData.Split(null).ToList();
 
-            //List<string> filterWord = null;
+        //    _readedData.RemoveAll(a => string.IsNullOrWhiteSpace(a));
 
-            //TextSearch s = new TextSearch();
+        //    _readedData = _readedData.ConvertAll(a => a.ToLower()).Distinct().ToList();
 
-            //foreach (string item in _readedData)
-            //{
-            //    filterWord = worldList.Where(a => a.StartsWith(item[0].ToString().ToLower())).ToList();
+        //    worldList = _readedData.ConvertAll(a => a.ToLower()).ToList();
 
-            //    //foreach (string targetWord in worldList)
-            //    //{
-            //    //    var targetLow = targetWord.ToLower();
+        //    List<string> filterWord = null;
 
-            //    //    var result = item.StartsWith(targetLow);
+        //    foreach (string item in worldList)
+        //    {
+        //        string _itemLower = item.ToLower();
 
-            //    //}
-            //}
+        //        if (_readedData.Any(a => a == _itemLower))
+        //            return true;
 
-            //foreach (string item in worldList)
-            //{
-            //    string _itemLower = item.ToLower();
+        //        if (_readedData.Contains(_itemLower))
+        //            return true;
+        //    }
 
-            //    if (_readedData.Any(a => a == _itemLower))
-            //        return true;
-
-            //    if (_readedData.Contains(_itemLower))
-            //        return true;
-
-            //    var b = _readedData.IndexOf(_itemLower);
-
-
-
-            //}
-
-            return false;
-        }
-
+        //    return false;
+        //}
     }
 }

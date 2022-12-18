@@ -14,12 +14,14 @@ namespace MacroBot.Repository
         private SimKeyOperation _simKeyOperation = null;
         public Screenshot _screenshotService = null;
         private ReadImage _readImage = null;
+        private TextSearch _textSearch = null;
 
         public RunMacro()
         {
             _simKeyOperation = new SimKeyOperation();
             _screenshotService = new Screenshot();
             _readImage = new ReadImage();
+            _textSearch = new TextSearch();
         }
 
         /// <summary>
@@ -57,7 +59,7 @@ namespace MacroBot.Repository
 
                     if (selectedScreenshot.ekListesi.Count > 0)
                     {
-                        if (MacroHelper.checkWords(selectedScreenshot.ekListesi, _readedData))
+                        if (_textSearch.searchData(selectedScreenshot.ekListesi, _readedData))
                         {
                             _macroResult.continueStatus = false;
                             _macroResult.findSearchedWord = true;
