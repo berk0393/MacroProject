@@ -95,26 +95,6 @@ namespace MacroBot
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tbReadedData = new System.Windows.Forms.TabPage();
             this.txtReadedData = new System.Windows.Forms.TextBox();
-            this.pnlMacroEdit = new System.Windows.Forms.TabPage();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label28 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label29 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label30 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label31 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
             this.tblControl.SuspendLayout();
             this.pnlMacroSettings.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -124,8 +104,6 @@ namespace MacroBot
             this.tbActionList.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tbReadedData.SuspendLayout();
-            this.pnlMacroEdit.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // lstbxRecord
@@ -161,7 +139,6 @@ namespace MacroBot
             this.tblControl.Controls.Add(this.pnlMacroSettings);
             this.tblControl.Controls.Add(this.pnlMouse);
             this.tblControl.Controls.Add(this.pnlReadScreen);
-            this.tblControl.Controls.Add(this.pnlMacroEdit);
             this.tblControl.Location = new System.Drawing.Point(12, 23);
             this.tblControl.Name = "tblControl";
             this.tblControl.SelectedIndex = 0;
@@ -812,197 +789,6 @@ namespace MacroBot
             this.txtReadedData.TabIndex = 0;
             this.txtReadedData.TextChanged += new System.EventHandler(this.txtReadedData_TextChanged);
             // 
-            // pnlMacroEdit
-            // 
-            this.pnlMacroEdit.Controls.Add(this.label30);
-            this.pnlMacroEdit.Controls.Add(this.button2);
-            this.pnlMacroEdit.Controls.Add(this.label31);
-            this.pnlMacroEdit.Controls.Add(this.textBox2);
-            this.pnlMacroEdit.Controls.Add(this.textBox3);
-            this.pnlMacroEdit.Controls.Add(this.textBox4);
-            this.pnlMacroEdit.Controls.Add(this.textBox5);
-            this.pnlMacroEdit.Controls.Add(this.textBox6);
-            this.pnlMacroEdit.Controls.Add(this.label32);
-            this.pnlMacroEdit.Controls.Add(this.label33);
-            this.pnlMacroEdit.Controls.Add(this.label34);
-            this.pnlMacroEdit.Controls.Add(this.label35);
-            this.pnlMacroEdit.Controls.Add(this.button3);
-            this.pnlMacroEdit.Controls.Add(this.panel2);
-            this.pnlMacroEdit.Controls.Add(this.label29);
-            this.pnlMacroEdit.Controls.Add(this.comboBox1);
-            this.pnlMacroEdit.Controls.Add(this.button1);
-            this.pnlMacroEdit.Location = new System.Drawing.Point(4, 22);
-            this.pnlMacroEdit.Name = "pnlMacroEdit";
-            this.pnlMacroEdit.Padding = new System.Windows.Forms.Padding(3);
-            this.pnlMacroEdit.Size = new System.Drawing.Size(767, 507);
-            this.pnlMacroEdit.TabIndex = 3;
-            this.pnlMacroEdit.Text = "Macro Düzen";
-            this.pnlMacroEdit.UseVisualStyleBackColor = true;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.label28);
-            this.panel2.Controls.Add(this.textBox1);
-            this.panel2.Location = new System.Drawing.Point(240, 13);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(289, 52);
-            this.panel2.TabIndex = 11;
-            this.panel2.Visible = false;
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(3, 20);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(139, 13);
-            this.label28.TabIndex = 5;
-            this.label28.Text = "Bekleme Süresi (Milisecond)";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(167, 20);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 6;
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(6, 35);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(56, 13);
-            this.label29.TabIndex = 10;
-            this.label29.Text = "İşlem Türü";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(97, 32);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 9;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(97, 71);
-            this.button1.Name = "button1";
-            this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button1.Size = new System.Drawing.Size(121, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Kayıt Aç";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(488, 191);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(104, 13);
-            this.label30.TabIndex = 30;
-            this.label30.Text = "Taranacak Kelimeler";
-            // 
-            // button2
-            // 
-            this.button2.Enabled = false;
-            this.button2.Location = new System.Drawing.Point(491, 292);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(226, 23);
-            this.button2.TabIndex = 29;
-            this.button2.Text = "Okunacak Ekranı Kaydet";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.ForeColor = System.Drawing.Color.Red;
-            this.label31.Location = new System.Drawing.Point(488, 263);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(109, 13);
-            this.label31.TabIndex = 28;
-            this.label31.Text = "ekadi1,ekadi2,ekadi3";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(491, 209);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox2.Size = new System.Drawing.Size(226, 44);
-            this.textBox2.TabIndex = 27;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(292, 237);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(102, 20);
-            this.textBox3.TabIndex = 22;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(119, 236);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 21;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(292, 191);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(103, 20);
-            this.textBox5.TabIndex = 20;
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(119, 191);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
-            this.textBox6.TabIndex = 19;
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(233, 240);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(38, 13);
-            this.label32.TabIndex = 26;
-            this.label32.Text = "Height";
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(233, 194);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(35, 13);
-            this.label33.TabIndex = 25;
-            this.label33.Text = "Width";
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(49, 240);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(68, 13);
-            this.label34.TabIndex = 24;
-            this.label34.Text = "Y Coordinate";
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(49, 194);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(68, 13);
-            this.label35.TabIndex = 23;
-            this.label35.Text = "X Coordinate";
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(292, 292);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(100, 23);
-            this.button3.TabIndex = 18;
-            this.button3.Text = "Dikdörtgen Çiz";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1027,10 +813,6 @@ namespace MacroBot
             this.tabPage1.ResumeLayout(false);
             this.tbReadedData.ResumeLayout(false);
             this.tbReadedData.PerformLayout();
-            this.pnlMacroEdit.ResumeLayout(false);
-            this.pnlMacroEdit.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1103,26 +885,6 @@ namespace MacroBot
         private System.Windows.Forms.TextBox txtWaitingSecond;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Panel pnlWaitingSecondPanel;
-        private System.Windows.Forms.TabPage pnlMacroEdit;
-        private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button1;
     }
 }
 
