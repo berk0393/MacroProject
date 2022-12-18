@@ -38,14 +38,17 @@ namespace MacroBot.Repository
 
             foreach (BotActionList item in actionList)
             {
-                if (item.actionID == 7)
+                if (item.actionID == (int)EnumActionType.Bekle)
                 {
                     Thread.Sleep(item.waitingSecond);
                     continue;
                 }
 
-                if (item.screenReadID != 0)
+                if (item.actionID == (int)EnumActionType.EkranOku)
                 {
+                    if (item.screenReadID == 0)
+                        continue;
+
                     string _readedData = string.Empty;
 
                     selectedScreenshot = screenReadActionList.Where(a => a.recordID == item.screenReadID).FirstOrDefault();
@@ -83,7 +86,7 @@ namespace MacroBot.Repository
         {
             _simKeyOperation.mouseCursor(x, y);
             Thread.Sleep(50);
-            runMouseAction(actionID);
+            runMouseAction((EnumActionType)actionID);
 
         }
 
@@ -101,23 +104,23 @@ namespace MacroBot.Repository
 
         }
 
-        private void runMouseAction(int actionID)
+        private void runMouseAction(EnumActionType actionID)
         {
             switch (actionID)
             {
-                case 1:
+                case EnumActionType.SolClick:
                     _simKeyOperation.mouseLeftClickFunction();
                     break;
-                case 2:
+                case EnumActionType.SagClick:
                     _simKeyOperation.mouseRightClickFunction();
                     break;
-                case 3:
+                case EnumActionType.SolCiftClick:
                     _simKeyOperation.mouseLeftDoubleClickFunction();
                     break;
-                case 4:
+                case EnumActionType.SagCiftClick:
                     _simKeyOperation.mouseRighttDoubleClickFunction();
                     break;
-                case 6:
+                case EnumActionType.Yonlendir:
                     break;
                 default:
                     throw new Exception("İşlem ID Bulunamadı. ID=" + actionID);

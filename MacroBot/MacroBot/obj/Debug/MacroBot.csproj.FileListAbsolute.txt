@@ -42,3 +42,4 @@ C:\Users\ABRA\Desktop\Macro Bot\MacroBot\MacroBot\bin\Debug\MacroBot.exe.manifes
 C:\Users\ABRA\Desktop\Macro Bot\MacroBot\MacroBot\bin\Debug\MacroBot.application
 C:\Users\ABRA\Desktop\Macro Bot\MacroBot\MacroBot\obj\Debug\MacroBot.exe.manifest
 C:\Users\ABRA\Desktop\Macro Bot\MacroBot\MacroBot\obj\Debug\MacroBot.application
+C:\Users\ABRA\Desktop\Macro Bot\MacroBot\MacroBot\bin\Debug\System.ComponentModel.Annotations.dll

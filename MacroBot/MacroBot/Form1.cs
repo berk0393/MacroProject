@@ -10,6 +10,7 @@ using System.Threading;
 using System.Windows.Forms;
 
 using static MacroBot.MouseEvent;
+using MacroBot.Helper;
 
 namespace MacroBot
 {
@@ -282,6 +283,7 @@ namespace MacroBot
             screadReadID = 1;
             lstbxRecord.Items.Clear();
             txtReadedData.Clear();
+            txtSearchedText.Clear();
             clearRectangle();
             resetAllObject();
             enabledAllButton();
@@ -343,6 +345,8 @@ namespace MacroBot
 
         private void waitingEventAdd()
         {
+            EnumActionType actionType = EnumActionType.Bekle;
+
             int second = 0;
             string _txtSecodn = txtWaitingSecond.Text;
 
@@ -350,20 +354,7 @@ namespace MacroBot
             if (!string.IsNullOrWhiteSpace(_txtSecodn))
                 second = Convert.ToInt32(txtWaitingSecond.Text);
 
-            addListBox("Bekle", 7, 0, 0, 0, second);
-        }
-
-
-        private string Search2(int startPos, string startMatchString, string endMatchString, string response)
-        {
-            int startMarch = response.IndexOf(startMatchString, startPos, StringComparison.Ordinal);
-            if (startMarch != -1)
-            {
-                startMarch += startMatchString.Length;
-                int endMatch = response.IndexOf(endMatchString, startMarch, StringComparison.Ordinal);
-                if (endMatch != -1) { return response.Substring(startMarch, endMatch - startMarch); }
-            }
-            return string.Empty;
+            addListBox(actionType.GetDisplayName(), (int)actionType, 0, 0, 0, second);
         }
 
         #endregion
@@ -465,6 +456,7 @@ namespace MacroBot
             disabledAllButton();
             recordRectangleCreate = true;
             exeForegroundWindow();
+            txtSearchedText.Clear();
         }
 
         /// <summary>
@@ -476,7 +468,9 @@ namespace MacroBot
         {
             try
             {
-                string ekler = textBox1.Text;
+                EnumActionType actionType = EnumActionType.EkranOku;
+
+                string ekler = txtSearchedText.Text;
 
                 List<string> eklerList = new List<string>();
 
@@ -487,7 +481,7 @@ namespace MacroBot
 
                 _actionRepository.addScreenReadList(screadReadID, eklerList, rectangleInfo.xCoordinate, rectangleInfo.yCoordinate, rectangleInfo.width, rectangleInfo.height);
 
-                addListBox("Ekran Oku", 5, rectangleInfo.xCoordinate, rectangleInfo.yCoordinate, screadReadID);
+                addListBox(actionType.GetDisplayName(), (int)actionType, rectangleInfo.xCoordinate, rectangleInfo.yCoordinate, screadReadID);
 
                 screadReadID++;
 

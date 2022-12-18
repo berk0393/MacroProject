@@ -1,4 +1,5 @@
-﻿using MacroBot.Model;
+﻿using MacroBot.Helper;
+using MacroBot.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,13 +27,19 @@ namespace MacroBot.Repository
         public List<ActionTypeModel> getActionList()
         {
             List<ActionTypeModel> types = new List<ActionTypeModel>();
-            types.Add(new ActionTypeModel() { typeID = 1, typeName = "Sol Click" });
-            types.Add(new ActionTypeModel() { typeID = 2, typeName = "Sağ Click" });
-            types.Add(new ActionTypeModel() { typeID = 3, typeName = "Sol Çift Click" });
-            types.Add(new ActionTypeModel() { typeID = 4, typeName = "Sağ Çift Click" });
-            types.Add(new ActionTypeModel() { typeID = 6, typeName = "Yönlendir" });
-            types.Add(new ActionTypeModel() { typeID = 7, typeName = "Bekle" });
-            types.Add(new ActionTypeModel() { typeID = 5, typeName = "Ekran Oku", visibleMouseEvent = false });
+
+            foreach (EnumActionType actionType in (EnumActionType[])Enum.GetValues(typeof(EnumActionType)))
+            {
+                types.Add(new ActionTypeModel() { typeID = (int)actionType, typeName = actionType.GetDisplayName(), visibleMouseEvent = actionType == EnumActionType.EkranOku ? false : true });
+            }
+
+            //types.Add(new ActionTypeModel() { typeID = 1, typeName = "Sol Click" });
+            //types.Add(new ActionTypeModel() { typeID = 2, typeName = "Sağ Click" });
+            //types.Add(new ActionTypeModel() { typeID = 3, typeName = "Sol Çift Click" });
+            //types.Add(new ActionTypeModel() { typeID = 4, typeName = "Sağ Çift Click" });
+            //types.Add(new ActionTypeModel() { typeID = 6, typeName = "Yönlendir" });
+            //types.Add(new ActionTypeModel() { typeID = 7, typeName = "Bekle" });
+            //types.Add(new ActionTypeModel() { typeID = 5, typeName = "Ekran Oku", visibleMouseEvent = false });
 
             return types;
         }
