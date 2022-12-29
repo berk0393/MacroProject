@@ -46,6 +46,12 @@ namespace MacroBot
 
         private bool macroRuning = false;
 
+        private BotActionList editBotAction = null;
+
+        private int actionListLastSelectedIndex = -1;
+
+        private bool isEditAction = false;
+
         private IKeyboardMouseEvents keyboardMouseEvents;
 
         public Form1()
@@ -57,7 +63,7 @@ namespace MacroBot
                 //Keyhook
                 createHook();
                 keyboardMouseEvents.MouseClick += MouseClickAll;
-                keyboardMouseEvents.KeyUp += KeyboardOnKeyUp;
+                //keyboardMouseEvents.KeyUp += KeyboardOnKeyUp;
 
                 //Action Repository
                 _actionRepository = new ActionRepository();
@@ -218,6 +224,7 @@ namespace MacroBot
             btnSaveRectangle.Enabled = false;
             clearRectangleInfoTextbox();
             rectangleDrawingCoordiantList.Clear();
+            txtSearchedText.Clear();
         }
 
         private void exeForegroundWindow()
@@ -283,10 +290,21 @@ namespace MacroBot
             screadReadID = 1;
             lstbxRecord.Items.Clear();
             txtReadedData.Clear();
-            txtSearchedText.Clear();
             clearRectangle();
             resetAllObject();
             enabledAllButton();
+            macroEditDataClear();
+        }
+
+        private void macroEditDataClear()
+        {
+            editBotAction = null;
+            actionListLastSelectedIndex = -1;
+            lstbxRecord.SelectedIndex = -1;
+            isEditAction = false;
+
+            drpActionType.SelectedIndex = 1;
+            clearRectangle();
         }
 
         private void fillCoordinateTextboxes(int index, int x, int y)
@@ -297,6 +315,19 @@ namespace MacroBot
 
             if (txt != null)
                 txt.Text = x.ToString() + " " + y.ToString();
+        }
+
+        private void clearCoordinateTextboxes()
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                string name = "txtClick" + (i);
+
+                TextBox txt = (TextBox)pnlReadScreen.Controls.Find(name, true)[0];
+
+                if (txt != null)
+                    txt.Clear();
+            }
         }
 
         private void addReadedData(string data)
@@ -357,6 +388,46 @@ namespace MacroBot
             addListBox(actionType.GetDisplayName(), (int)actionType, 0, 0, 0, second);
         }
 
+        private void mouseRecordButtonFunction(bool isWaitingEvent)
+        {
+            if (isWaitingEvent)
+            {
+                waitingEventAdd();
+                return;
+            }
+
+            recordIsActive = true;
+            disabledAllButton();
+            exeForegroundWindow();
+        }
+
+        private void showEditMouseInfo()
+        {
+            tblControl.SelectTab(pnlMouse);
+
+            clearRectangle();
+
+            drpActionType.SelectedValue = editBotAction.actionID;
+
+            if (editBotAction.actionID == (int)EnumActionType.Bekle)
+                txtWaitingSecond.Text = editBotAction.waitingSecond.ToString();
+        }
+
+        private void showEditScreenReadInfo()
+        {
+            tblControl.SelectTab(pnlReadScreen);
+
+            drpActionType.SelectedIndex = 1;
+
+            ScreenReadActionList screenReadData = _actionRepository.screenReadActionList.Where(a => a.recordID == editBotAction.screenReadID).FirstOrDefault();
+
+            addRectangleInfoTextbox(screenReadData.xCoordinate, screenReadData.yCoordinate, screenReadData.width, screenReadData.height);
+
+            string searchedData = string.Join(",", screenReadData.ekListesi);
+
+            txtSearchedText.Text = searchedData;
+        }
+
         #endregion
 
         #region Events
@@ -368,12 +439,9 @@ namespace MacroBot
         /// <param name="e"></param>
         private void btnRecord_Click(object sender, EventArgs e)
         {
-            if (drpActionType.SelectedValue.ToString() == "7")
-                waitingEventAdd();
-
-            recordIsActive = true;
-            disabledAllButton();
-            exeForegroundWindow();
+            if (drpActionType.SelectedValue.ToString() == ((int)EnumActionType.Bekle).ToString())
+                mouseRecordButtonFunction(true);
+            else mouseRecordButtonFunction(false);
         }
 
         /// <summary>
@@ -487,6 +555,7 @@ namespace MacroBot
 
                 clearRectangle();
                 enabledAllButton();
+                clearCoordinateTextboxes();
             }
             catch (Exception ex)
             {
@@ -577,11 +646,9 @@ namespace MacroBot
             txtReadedData.Refresh();
         }
 
-        #endregion
-
         private void drpActionType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (drpActionType.SelectedValue.ToString() == "7")
+            if (drpActionType.SelectedValue.ToString() == ((int)EnumActionType.Bekle).ToString())
             {
                 pnlWaitingSecondPanel.Visible = true;
             }
@@ -589,6 +656,48 @@ namespace MacroBot
             {
                 pnlWaitingSecondPanel.Visible = false;
             }
+        }
+
+        private void lstbxRecord_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            editBotAction = null;
+
+            int selectedIndex = lstbxRecord.SelectedIndex;
+
+            if (actionListLastSelectedIndex == selectedIndex)
+            {
+                macroEditDataClear();
+                return;
+            }
+
+            actionListLastSelectedIndex = selectedIndex;
+
+            editBotAction = _actionRepository.actionList[selectedIndex];
+
+            if (editBotAction.actionID == (int)EnumActionType.EkranOku)
+                showEditScreenReadInfo();
+            else
+                showEditMouseInfo();
+        }
+
+
+        #endregion
+
+        private void btnEditMouseCancel_Click(object sender, EventArgs e)
+        {
+            macroEditDataClear();
+        }
+
+        private void btnMouseEdit_Click(object sender, EventArgs e)
+        {
+            if (drpActionType.SelectedValue.ToString() == ((int)EnumActionType.Bekle).ToString())
+                mouseRecordButtonFunction(true);
+            else
+            {
+                isEditAction = true;
+                mouseRecordButtonFunction(false);
+            }
+                
         }
     }
 }
