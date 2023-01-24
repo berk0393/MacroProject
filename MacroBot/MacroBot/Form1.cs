@@ -369,7 +369,10 @@ namespace MacroBot
         private void btnRecord_Click(object sender, EventArgs e)
         {
             if (drpActionType.SelectedValue.ToString() == "7")
+            {
                 waitingEventAdd();
+                return;
+            }
 
             recordIsActive = true;
             disabledAllButton();
