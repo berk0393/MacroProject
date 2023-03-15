@@ -338,11 +338,6 @@ namespace MacroBot
             txtReadedData.Text += Environment.NewLine;
         }
 
-        public void findedWord()
-        {
-            macroStatusText("Kelime Bulundu");
-        }
-
         private void macroStatusText(string text)
         {
             lblMacroStart.Text = text;
