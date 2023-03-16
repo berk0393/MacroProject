@@ -75,7 +75,7 @@ namespace MacroBot.Repository
                 {
                     mouseOperations(item.actionID, item.xCoordinate, item.yCoordinate);
                 }
-                Thread.Sleep(50);
+                //Thread.Sleep(50);
             }
 
             _macroResult.readedDataList = readedDataList;
@@ -85,7 +85,7 @@ namespace MacroBot.Repository
         private void mouseOperations(int actionID, int x, int y)
         {
             _simKeyOperation.mouseCursor(x, y);
-            Thread.Sleep(50);
+            //Thread.Sleep(50);
             runMouseAction((EnumActionType)actionID);
 
         }
