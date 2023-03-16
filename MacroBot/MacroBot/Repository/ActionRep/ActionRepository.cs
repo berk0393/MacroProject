@@ -124,5 +124,10 @@ namespace MacroBot.Repository
             screenReadActionList[index] = selectedReadAction;
         }
 
+        public ScreenReadActionList getScreenAction(int screenID)
+        {
+            return screenReadActionList.Where(a => a.recordID == screenID).FirstOrDefault();
+        }
+
     }
 }

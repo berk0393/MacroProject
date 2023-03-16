@@ -30,7 +30,6 @@ C:\Users\ABRA\Desktop\Macro Bot\MacroBot\MacroBot\bin\Debug\Tesseract.dll
 C:\Users\ABRA\Desktop\Macro Bot\MacroBot\MacroBot\bin\Debug\WindowsInput.dll
 C:\Users\ABRA\Desktop\Macro Bot\MacroBot\MacroBot\bin\Debug\WindowsInput.pdb
 C:\Users\ABRA\Desktop\Macro Bot\MacroBot\MacroBot\bin\Debug\WindowsInput.xml
-C:\Users\ABRA\Desktop\Macro Bot\MacroBot\MacroBot\obj\Debug\MacroBot.csprojAssemblyReference.cache
 C:\Users\ABRA\Desktop\Macro Bot\MacroBot\MacroBot\obj\Debug\MacroBot.Form1.resources
 C:\Users\ABRA\Desktop\Macro Bot\MacroBot\MacroBot\obj\Debug\MacroBot.Properties.Resources.resources
 C:\Users\ABRA\Desktop\Macro Bot\MacroBot\MacroBot\obj\Debug\MacroBot.csproj.GenerateResource.cache
@@ -43,3 +42,4 @@ C:\Users\ABRA\Desktop\Macro Bot\MacroBot\MacroBot\bin\Debug\MacroBot.application
 C:\Users\ABRA\Desktop\Macro Bot\MacroBot\MacroBot\obj\Debug\MacroBot.exe.manifest
 C:\Users\ABRA\Desktop\Macro Bot\MacroBot\MacroBot\obj\Debug\MacroBot.application
 C:\Users\ABRA\Desktop\Macro Bot\MacroBot\MacroBot\bin\Debug\System.ComponentModel.Annotations.dll
+C:\Users\ABRA\Desktop\Macro Bot\MacroBot\MacroBot\obj\Debug\MacroBot.csprojAssemblyReference.cache

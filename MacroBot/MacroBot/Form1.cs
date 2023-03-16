@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using static MacroBot.MouseEvent;
 using MacroBot.Helper;
 using MacroBot.Repository.RectangleRep;
+using MacroBot.Repository.ScreenDraw;
 
 namespace MacroBot
 {
@@ -59,6 +60,8 @@ namespace MacroBot
 
         private BotActionList editBotAction = null;
 
+        private DrawRepository drawScreen = null;
+
 
 
         private IKeyboardMouseEvents keyboardMouseEvents;
@@ -91,11 +94,14 @@ namespace MacroBot
                 _rectangleRepository = new RectangleRepository();
                 rectangleInfo = new CreatedRectangleInfo();
                 rectangleDrawingCoordiantList = new List<RectangleCooridant>();
+                drawScreen = new DrawRepository();
 
                 //Thread Instance
                 createRunMacroThreadInstance();
 
                 clearOlderFiles();
+
+
 
             }
             catch (Exception ex)
@@ -846,28 +852,40 @@ namespace MacroBot
             editBotAction = null;
 
             int selectedIndex = lstbxRecord.SelectedIndex;
+            //drawScreen.cleanDraw();
 
             if (actionListLastSelectedIndex == selectedIndex)
             {
                 macroEditDataClear();
                 mouseFunctionEditScreen(false);
+                drawScreen.cleandraw();
                 return;
             }
+
+            if (actionListLastSelectedIndex != -1)
+                drawScreen.cleandraw();
+
 
             actionListLastSelectedIndex = selectedIndex;
 
             editBotAction = _actionRepository.actionList.Where(a => a.actionQueue == selectedIndex).FirstOrDefault();
+
 
             if (editBotAction.actionID == (int)EnumActionType.EkranOku)
             {
                 showEditScreenReadInfo();
                 rectangleFunctionEditScreen(true);
 
+                ScreenReadActionList screenAction = _actionRepository.getScreenAction(editBotAction.screenReadID);
+
+                if (screenAction != null)
+                    drawScreen.drawRectangleInScreen(screenAction.xCoordinate, screenAction.yCoordinate, screenAction.width, screenAction.height);
             }
             else
             {
                 mouseFunctionEditScreen(true);
                 showEditMouseInfo();
+                drawScreen.drawPointInScreen(editBotAction.xCoordinate, editBotAction.yCoordinate);
             }
         }
 
@@ -906,12 +924,7 @@ namespace MacroBot
         {
             macroEditDataClear();
         }
-
-
-
         #endregion
-
-
     }
 }
 
