@@ -97,6 +97,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DrawForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DrawForm.Designer.cs">
+      <DependentUpon>DrawForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +131,9 @@
     <Compile Include="Repository\ScreenshotRep\Screenshot.cs" />
     <Compile Include="Repository\SimKeyOperation.cs" />
     <Compile Include="Repository\TextSearch.cs" />
+    <EmbeddedResource Include="DrawForm.resx">
+      <DependentUpon>DrawForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

@@ -35,6 +35,8 @@ namespace MacroBot
             this.tbReadedData = new System.Windows.Forms.TabPage();
             this.txtReadedData = new System.Windows.Forms.TextBox();
             this.pnlReadScreen = new System.Windows.Forms.TabPage();
+            this.btnRectangleEdit = new System.Windows.Forms.Button();
+            this.btnRectangleCancel = new System.Windows.Forms.Button();
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.txtClick3 = new System.Windows.Forms.TextBox();
@@ -98,8 +100,6 @@ namespace MacroBot
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.tblControl = new System.Windows.Forms.TabControl();
-            this.btnRectangleCancel = new System.Windows.Forms.Button();
-            this.btnRectangleEdit = new System.Windows.Forms.Button();
             this.tbActionList.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tbReadedData.SuspendLayout();
@@ -203,6 +203,32 @@ namespace MacroBot
             this.pnlReadScreen.TabIndex = 1;
             this.pnlReadScreen.Text = "Ekran Okuma";
             this.pnlReadScreen.UseVisualStyleBackColor = true;
+            // 
+            // btnRectangleEdit
+            // 
+            this.btnRectangleEdit.BackColor = System.Drawing.Color.Orange;
+            this.btnRectangleEdit.ForeColor = System.Drawing.Color.White;
+            this.btnRectangleEdit.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnRectangleEdit.Location = new System.Drawing.Point(158, 114);
+            this.btnRectangleEdit.Name = "btnRectangleEdit";
+            this.btnRectangleEdit.Size = new System.Drawing.Size(100, 23);
+            this.btnRectangleEdit.TabIndex = 30;
+            this.btnRectangleEdit.Text = "Yeni Dikdörtgen Çiz";
+            this.btnRectangleEdit.UseVisualStyleBackColor = false;
+            this.btnRectangleEdit.Visible = false;
+            this.btnRectangleEdit.Click += new System.EventHandler(this.btnRectangleEdit_Click);
+            // 
+            // btnRectangleCancel
+            // 
+            this.btnRectangleCancel.BackColor = System.Drawing.Color.Red;
+            this.btnRectangleCancel.ForeColor = System.Drawing.Color.White;
+            this.btnRectangleCancel.Location = new System.Drawing.Point(264, 114);
+            this.btnRectangleCancel.Name = "btnRectangleCancel";
+            this.btnRectangleCancel.Size = new System.Drawing.Size(100, 23);
+            this.btnRectangleCancel.TabIndex = 29;
+            this.btnRectangleCancel.Text = "İptal";
+            this.btnRectangleCancel.UseVisualStyleBackColor = false;
+            this.btnRectangleCancel.Click += new System.EventHandler(this.btnRectangleCancel_Click);
             // 
             // label20
             // 
@@ -836,32 +862,6 @@ namespace MacroBot
             this.tblControl.SelectedIndex = 0;
             this.tblControl.Size = new System.Drawing.Size(775, 533);
             this.tblControl.TabIndex = 3;
-            // 
-            // btnRectangleCancel
-            // 
-            this.btnRectangleCancel.BackColor = System.Drawing.Color.Red;
-            this.btnRectangleCancel.ForeColor = System.Drawing.Color.White;
-            this.btnRectangleCancel.Location = new System.Drawing.Point(264, 114);
-            this.btnRectangleCancel.Name = "btnRectangleCancel";
-            this.btnRectangleCancel.Size = new System.Drawing.Size(100, 23);
-            this.btnRectangleCancel.TabIndex = 29;
-            this.btnRectangleCancel.Text = "İptal";
-            this.btnRectangleCancel.UseVisualStyleBackColor = false;
-            this.btnRectangleCancel.Click += new System.EventHandler(this.btnRectangleCancel_Click);
-            // 
-            // btnRectangleEdit
-            // 
-            this.btnRectangleEdit.BackColor = System.Drawing.Color.Orange;
-            this.btnRectangleEdit.ForeColor = System.Drawing.Color.White;
-            this.btnRectangleEdit.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnRectangleEdit.Location = new System.Drawing.Point(158, 114);
-            this.btnRectangleEdit.Name = "btnRectangleEdit";
-            this.btnRectangleEdit.Size = new System.Drawing.Size(100, 23);
-            this.btnRectangleEdit.TabIndex = 30;
-            this.btnRectangleEdit.Text = "Yeni Dikdörtgen Çiz";
-            this.btnRectangleEdit.UseVisualStyleBackColor = false;
-            this.btnRectangleEdit.Visible = false;
-            this.btnRectangleEdit.Click += new System.EventHandler(this.btnRectangleEdit_Click);
             // 
             // Form1
             // 

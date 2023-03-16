@@ -852,7 +852,6 @@ namespace MacroBot
             editBotAction = null;
 
             int selectedIndex = lstbxRecord.SelectedIndex;
-            //drawScreen.cleanDraw();
 
             if (actionListLastSelectedIndex == selectedIndex)
             {

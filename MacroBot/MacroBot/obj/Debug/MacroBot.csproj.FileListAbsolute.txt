@@ -43,3 +43,4 @@ C:\Users\ABRA\Desktop\Macro Bot\MacroBot\MacroBot\obj\Debug\MacroBot.exe.manifes
 C:\Users\ABRA\Desktop\Macro Bot\MacroBot\MacroBot\obj\Debug\MacroBot.application
 C:\Users\ABRA\Desktop\Macro Bot\MacroBot\MacroBot\bin\Debug\System.ComponentModel.Annotations.dll
 C:\Users\ABRA\Desktop\Macro Bot\MacroBot\MacroBot\obj\Debug\MacroBot.csprojAssemblyReference.cache
+C:\Users\ABRA\Desktop\Macro Bot\MacroBot\MacroBot\obj\Debug\MacroBot.DrawForm.resources
