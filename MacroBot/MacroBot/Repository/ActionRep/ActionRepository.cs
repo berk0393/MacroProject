@@ -33,14 +33,6 @@ namespace MacroBot.Repository
                 types.Add(new ActionTypeModel() { typeID = (int)actionType, typeName = actionType.GetDisplayName(), visibleMouseEvent = actionType == EnumActionType.EkranOku ? false : true });
             }
 
-            //types.Add(new ActionTypeModel() { typeID = 1, typeName = "Sol Click" });
-            //types.Add(new ActionTypeModel() { typeID = 2, typeName = "Sağ Click" });
-            //types.Add(new ActionTypeModel() { typeID = 3, typeName = "Sol Çift Click" });
-            //types.Add(new ActionTypeModel() { typeID = 4, typeName = "Sağ Çift Click" });
-            //types.Add(new ActionTypeModel() { typeID = 6, typeName = "Yönlendir" });
-            //types.Add(new ActionTypeModel() { typeID = 7, typeName = "Bekle" });
-            //types.Add(new ActionTypeModel() { typeID = 5, typeName = "Ekran Oku", visibleMouseEvent = false });
-
             return types;
         }
 
@@ -65,6 +57,29 @@ namespace MacroBot.Repository
             });
         }
 
+        public void editActionList(int selectedActionQueue, int xPoint, int yPoint, int actionTypeValue, int screenReadID = 0, int waitingSecond = 0)
+        {
+
+            BotActionList selectedAction = actionList.Where(a => a.actionQueue == selectedActionQueue).FirstOrDefault();
+
+            int index = 0;
+
+            if (selectedAction == null)
+            {
+                return;
+            }
+
+            index = actionList.FindIndex(a => a.actionQueue == selectedActionQueue);
+
+            selectedAction.actionID = actionTypeValue;
+            selectedAction.xCoordinate = xPoint;
+            selectedAction.yCoordinate = yPoint;
+            selectedAction.screenReadID = screenReadID;
+            selectedAction.waitingSecond = waitingSecond;
+
+            actionList[index] = selectedAction;
+        }
+
         /// <summary>
         /// Aksiyonlar içerisinde ki Görsel Okuma Bilgilerinin Detaylarını Tutar
         /// </summary>
@@ -87,49 +102,26 @@ namespace MacroBot.Repository
             });
         }
 
-        /// <summary>
-        /// Seçilen 4 Noktayı Hesaplayarak X,Y koordinatları ve Width Heigt Olacak Şekilde Dikdörtgen Bilgileri Verir
-        /// </summary>
-        /// <param name="rectangleDrawingCoordiantList"></param>
-        /// <returns></returns>
-        public CreatedRectangleInfo defineRectangle(List<RectangleCooridant> rectangleDrawingCoordiantList)
+        public void editScreenReadList(int selectedActionID, List<string> ekListesi, int xPoint, int yPoint, int width, int height)
         {
-            List<RectangleCooridant> minYCoordinantList = rectangleDrawingCoordiantList.OrderBy(a => a.yCoordinate).Take(2).ToList();
+            ScreenReadActionList selectedReadAction = screenReadActionList.Where(a => a.recordID == selectedActionID).FirstOrDefault();
 
-            int xCoordinant = findXCoordinate(minYCoordinantList);
-            int yCoordinant = findYCoordinate(minYCoordinantList);
+            int index = 0;
 
-            int width = rectangleDrawingCoordiantList.Max(a => a.xCoordinate) - rectangleDrawingCoordiantList.Min(a => a.xCoordinate);
-
-            int height = rectangleDrawingCoordiantList.Max(a => a.yCoordinate) - rectangleDrawingCoordiantList.Min(a => a.yCoordinate);
-
-            CreatedRectangleInfo info = new CreatedRectangleInfo()
+            if (selectedReadAction == null)
             {
-                xCoordinate = xCoordinant,
-                yCoordinate = yCoordinant,
-                width = width,
-                height = height
-            };
+                return;
+            }
 
-            return info;
-        }
+            index = screenReadActionList.FindIndex(a => a.recordID == selectedActionID);
 
-        /// <summary>
-        /// En Küçük Y koordinanta Sahip 2 Değer Verilir. Buradan X Coordiant'ı bulunur
-        /// </summary>
-        /// <param name="minYCoordinantList"></param>
-        private int findXCoordinate(List<RectangleCooridant> minYCoordinantList)
-        {
-            return minYCoordinantList.OrderBy(a => a.xCoordinate).FirstOrDefault().xCoordinate;
-        }
+            selectedReadAction.ekListesi = ekListesi;
+            selectedReadAction.xCoordinate = xPoint;
+            selectedReadAction.yCoordinate = yPoint;
+            selectedReadAction.width = width;
+            selectedReadAction.height = height;
 
-        /// <summary>
-        /// En büyük Y koordinanta Sahip olan 2 Değer Verilir. Buradan Y coordinantı Bulunur
-        /// </summary>
-        /// <param name="maxYCoordinantList"></param>
-        private int findYCoordinate(List<RectangleCooridant> maxYCoordinantList)
-        {
-            return maxYCoordinantList.OrderBy(a => a.xCoordinate).FirstOrDefault().yCoordinate;
+            screenReadActionList[index] = selectedReadAction;
         }
 
     }
