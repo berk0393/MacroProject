@@ -77,7 +77,7 @@ namespace MacroBot
                 //Keyhook
                 createHook();
                 keyboardMouseEvents.MouseClick += MouseClickAll;
-                //keyboardMouseEvents.KeyUp += KeyboardOnKeyUp;
+                keyboardMouseEvents.KeyUp += KeyboardOnKeyUp;
 
                 //Action Repository
                 _actionRepository = new ActionRepository();
