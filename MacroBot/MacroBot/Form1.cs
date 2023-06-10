@@ -252,6 +252,8 @@ namespace MacroBot
 
             drpActionType.SelectedIndex = 1;
             clearRectangle();
+
+            drawScreen.cleandraw();
         }
 
         /// <summary>
@@ -317,7 +319,10 @@ namespace MacroBot
         {
             if (isWaitingEvent)
             {
-                waitingEventAdd();
+                if (!isEditAction)
+                    waitingEventAdd();
+                else editWaitingEvent();
+
                 return;
             }
 
@@ -383,6 +388,11 @@ namespace MacroBot
             }
         }
 
+        /// <summary>
+        /// Keyboard a basılan tuşun yakalanması
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void KeyboardOnKeyUp(object sender, KeyEventArgs e)
         {
             try
@@ -450,6 +460,9 @@ namespace MacroBot
             lblRepeatWaitingTimeInfo.Text = repeatAfterSleepMilisecond.ToString() + " Milisecond";
         }
 
+        /// <summary>
+        /// Fare düzenleme ekranının aksiyonu
+        /// </summary>
         private void showEditMouseInfo()
         {
             tblControl.SelectTab(pnlMouse);
@@ -462,6 +475,9 @@ namespace MacroBot
                 txtWaitingSecond.Text = editBotAction.waitingSecond.ToString();
         }
 
+        /// <summary>
+        /// Dikdörtgen seçim ekranında ki okunacak datalar ekranının aksiyonu
+        /// </summary>
         private void showEditScreenReadInfo()
         {
             tblControl.SelectTab(pnlReadScreen);
@@ -477,6 +493,10 @@ namespace MacroBot
             txtSearchedText.Text = searchedData;
         }
 
+        /// <summary>
+        /// Fare Edit Aksiyonu Tuşları
+        /// </summary>
+        /// <param name="editFunctionOpen"></param>
         private void mouseFunctionEditScreen(bool editFunctionOpen)
         {
             if (editFunctionOpen)
@@ -491,6 +511,10 @@ namespace MacroBot
             }
         }
 
+        /// <summary>
+        /// Dörtgen Editle Sayfası Aksiyonları
+        /// </summary>
+        /// <param name="editFunctionOpen"></param>
         private void rectangleFunctionEditScreen(bool editFunctionOpen)
         {
             if (editFunctionOpen)
@@ -591,17 +615,23 @@ namespace MacroBot
         {
             EnumActionType actionType = EnumActionType.Bekle;
 
-            int second = 0;
-            string _txtSecodn = txtWaitingSecond.Text;
-
-
-            if (!string.IsNullOrWhiteSpace(_txtSecodn))
-                second = Convert.ToInt32(txtWaitingSecond.Text);
-
-            addListBox(actionType.GetDisplayName(), (int)actionType, 0, 0, 0, second);
+            addListBox(actionType.GetDisplayName(), (int)actionType, 0, 0, 0, getSecondData());
         }
 
+        /// <summary>
+        /// Bekleme Özelliği Edit
+        /// </summary>
+        private void editWaitingEvent()
+        {
+            string selectedActionTypeName = drpActionType.Text;
+            int selectedActionTypeID = Convert.ToInt32(drpActionType.SelectedValue);
 
+            editListBox(selectedActionTypeName, selectedActionTypeID, 0, 0, 0, getSecondData());
+
+            isEditAction = false;
+
+            macroEditDataClear();
+        }
 
         #endregion
 
@@ -675,6 +705,22 @@ namespace MacroBot
             MessageBox.Show(text, "İşlem Başarısız", MessageBoxButtons.OK, MessageBoxIcon.Error);
             enabledAllButton();
         }
+
+        /// <summary>
+        /// Bekle Komutu için yazılan saniye değerini döndürür
+        /// </summary>
+        /// <returns></returns>
+        private int getSecondData()
+        {
+            int second = 0;
+            string _txtSecodn = txtWaitingSecond.Text;
+
+
+            if (!string.IsNullOrWhiteSpace(_txtSecodn))
+                second = Convert.ToInt32(txtWaitingSecond.Text);
+
+            return second;
+        }
         #endregion
 
         #region Events
@@ -686,12 +732,14 @@ namespace MacroBot
         /// <param name="e"></param>
         private void btnRecord_Click(object sender, EventArgs e)
         {
+            bool isWaitingEvent = false;
+
             if (drpActionType.SelectedValue.ToString() == ((int)EnumActionType.Bekle).ToString())
-                mouseRecordButtonFunction(true);
-            else mouseRecordButtonFunction(false);
+                isWaitingEvent = true;
+
+            mouseRecordButtonFunction(isWaitingEvent);
+
         }
-
-
 
         /// <summary>
         /// Dikdörtgen Click İşlemi Başlatıcısı
@@ -779,9 +827,6 @@ namespace MacroBot
             {
                 showAlert(ex.Message);
             }
-
-
-            //ChromeRivals
         }
 
         /// <summary>
@@ -794,10 +839,17 @@ namespace MacroBot
             clearAllProgramFunction();
         }
 
+        /// <summary>
+        /// Programı Run eder
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnStart_Click(object sender, EventArgs e)
         {
             try
             {
+                macroEditDataClear();
+
                 if (runMacroThread.ThreadState != ThreadState.Running)
                 {
                     macroStatusText("Macro Başlatıldı");
@@ -818,6 +870,11 @@ namespace MacroBot
             }
         }
 
+        /// <summary>
+        /// Programı Durdurur
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnStop_Click(object sender, EventArgs e)
         {
             macroStatusText("Macro Durduruldu");
@@ -825,6 +882,11 @@ namespace MacroBot
             stopRunMacroThread();
         }
 
+        /// <summary>
+        /// Botla okunan multi textboxt ın change özelliği
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtReadedData_TextChanged(object sender, EventArgs e)
         {
             txtReadedData.SelectionStart = txtReadedData.TextLength;
@@ -832,6 +894,11 @@ namespace MacroBot
             txtReadedData.Refresh();
         }
 
+        /// <summary>
+        /// İşlem Tipi Selected index Change
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void drpActionType_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (drpActionType.SelectedValue.ToString() == ((int)EnumActionType.Bekle).ToString())
@@ -844,6 +911,11 @@ namespace MacroBot
             }
         }
 
+        /// <summary>
+        /// Record Listbox ın selected change'i
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lstbxRecord_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (isEditAction)
@@ -884,10 +956,16 @@ namespace MacroBot
             {
                 mouseFunctionEditScreen(true);
                 showEditMouseInfo();
-                drawScreen.drawPointInScreen(editBotAction.xCoordinate, editBotAction.yCoordinate);
+                if (drpActionType.SelectedValue.ToString() != ((int)EnumActionType.Bekle).ToString())
+                    drawScreen.drawPointInScreen(editBotAction.xCoordinate, editBotAction.yCoordinate);
             }
         }
 
+        /// <summary>
+        /// Yeni Dörtgen oluşturma işlemi İptal Tuşu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRectangleCancel_Click(object sender, EventArgs e)
         {
             clearRectangle();
@@ -899,26 +977,40 @@ namespace MacroBot
                 macroEditDataClear();
         }
 
+        /// <summary>
+        /// Dörtgen Düzenleme Button Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRectangleEdit_Click(object sender, EventArgs e)
         {
             startRectangleRecord();
             isEditAction = true;
         }
 
-
+        /// <summary>
+        /// Fare Tuşu Edit Click Button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnMouseEdit_Click(object sender, EventArgs e)
         {
-            if (drpActionType.SelectedValue.ToString() == ((int)EnumActionType.Bekle).ToString())
-                mouseRecordButtonFunction(true);
-            else
-            {
-                isEditAction = true;
-                mouseRecordButtonFunction(false);
-            }
+            bool isWaitingEvent = false;
+            isEditAction = true;
 
             btnMouseEdit.Enabled = false;
+
+            if (drpActionType.SelectedValue.ToString() == ((int)EnumActionType.Bekle).ToString())
+                isWaitingEvent = true;
+
+            mouseRecordButtonFunction(isWaitingEvent);
         }
 
+        /// <summary>
+        /// Fare Tuşu Editleme İptal Tuşu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnEditMouseCancel_Click(object sender, EventArgs e)
         {
             macroEditDataClear();
