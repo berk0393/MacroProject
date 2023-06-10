@@ -60,6 +60,13 @@ namespace MacroBot.Repository
             filePath = getImagesFilePath();
         }
 
+        /// <summary>
+        /// Ss işlemini başlatan fonksiyon
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
         public void takeScreenShot(int x, int y, int width, int height)
         {
             try
@@ -80,6 +87,11 @@ namespace MacroBot.Repository
             }
         }
 
+        /// <summary>
+        /// Kırpılmış Görseli Getirir. GetzoomImage true gelirse kırpılıp büyütülmüş alan gelir
+        /// </summary>
+        /// <param name="getZoomImage"></param>
+        /// <returns></returns>
         public Bitmap getCropedImage(bool getZoomImage = false)
         {
             string cropedImageFullName = filePath + (getZoomImage ? getchatImageZoom() : getchatImage());
@@ -92,6 +104,10 @@ namespace MacroBot.Repository
 
         }
 
+        /// <summary>
+        /// Ekranın Ss ini alır
+        /// </summary>
+        /// <returns></returns>
         private Bitmap ScreenShotFunction() // Bitmap türünde olşuturuyoruz  fonksiyonumuzu. 
         {
             Bitmap Screenshot = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
@@ -100,6 +116,9 @@ namespace MacroBot.Repository
             return Screenshot;
         }
 
+        /// <summary>
+        /// Ss de belirtilen yeri Kırpar
+        /// </summary>
         private void CropChat()
         {
             Bitmap source = new Bitmap(filePath + getScreenShotPngName());
@@ -132,6 +151,9 @@ namespace MacroBot.Repository
             closeFile(path);
         }
 
+        /// <summary>
+        /// Kırpılan Resme Zoom Uygular Ve Kayıt Eder
+        /// </summary>
         private void zoomData()
         {
             Bitmap data = getCropedImage();
@@ -143,6 +165,10 @@ namespace MacroBot.Repository
             saveFile(filePath + getchatImageZoom(), newZoomImage);
         }
 
+        /// <summary>
+        /// Filestream Dosyalarını Kapatır
+        /// </summary>
+        /// <param name="path"></param>
         private void closeFile(string path)
         {
             FileStream fs = new FileStream(path, FileMode.OpenOrCreate);
